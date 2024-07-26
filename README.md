@@ -20,4 +20,3 @@ Linkedin: [linkedin.com/in/tommy1003](https://linkedin.com/in/tommy1003)
 
 Upwork: [Upwork](https://www.upwork.com/freelancers/~01c25a7c4b607747f7)
 
-To have an overview of my portfolio.
