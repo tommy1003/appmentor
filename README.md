@@ -1,5 +1,7 @@
 # Code for community 🌏
 
+![Profile Views](https://komarev.com/ghpvc/?username=YOUR_USERNAME)
+
 #### Power Apps components
 
 #### Apps Script code snippets
