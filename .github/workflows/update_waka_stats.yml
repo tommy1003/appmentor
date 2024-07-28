@@ -1,0 +1,34 @@
+name: Update WakaTime Stats
+
+on:
+  schedule:
+    - cron: '0 * * * *' # Runs every hour
+  workflow_dispatch:
+
+jobs:
+  update-waka-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Fetch WakaTime Stats
+        env:
+          WAKATIME_API_KEY: ${{ secrets.WAKA_API}}
+        run: |
+          curl -s -H "Authorization: Bearer ${WAKATIME_API_KEY}" "https://wakatime.com/api/v1/users/current/stats/last_7_days" > waka_stats.json
+
+      - name: Update README
+        run: |
+          wakatime_stats=$(cat waka_stats.json)
+          readme_content=$(cat README.md)
+          new_readme_content=$(echo "$readme_content" | sed -z "s|<!--START_SECTION:waka-->.*<!--END_SECTION:waka-->|<!--START_SECTION:waka-->\n\`\`\`json\n$wakatime_stats\n\`\`\`\n<!--END_SECTION:waka-->|s")
+          echo "$new_readme_content" > README.md
+
+      - name: Commit Changes
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git add README.md
+          git commit -m 'Update WakaTime stats'
+          git push
