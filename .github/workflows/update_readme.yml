@@ -17,7 +17,7 @@ jobs:
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
         run: |
           curl -s "https://wakatime.com/api/v1/users/current/stats/last_7_days?api_key=${{ secrets.WAKATIME_API_KEY }}" > waka_stats.json
-          cat waka_stats.json  # Debugging: Output the JSON response
+          echo waka_stats.json  # Debugging: Output the JSON response
           coding_time=$(jq -r '.data.human_readable_total' waka_stats.json)
           echo "Coding time: ${coding_time}"  # Debugging: Output the coding time
 
