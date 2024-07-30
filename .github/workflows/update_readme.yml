@@ -26,7 +26,7 @@ jobs:
           echo "Current README content:"
           echo "$readme_content"  # Debugging: Output the current README content
 
-          new_content=$(echo "$readme_content" | sed -E "s|(<!--waka-->)*(<!--endwaka-->)|Total coding time last week: ${coding_time}|")
+          new_content=$(echo "$readme_content" | sed -E "s|(<!--waka-->)[^<]*(<!--endwaka-->)|Total coding time last week: ${coding_time}|")
           echo "New README content:"
           echo "$new_content"  # Debugging: Output the new README content
           echo "$new_content" > README.md
