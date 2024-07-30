@@ -25,6 +25,3 @@ Upwork: [Upwork](https://www.upwork.com/freelancers/~01c25a7c4b607747f7)
 ![My GitHub Stats](https://github-readme-stats.vercel.app/api?username=tommy1003)
 
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=tommy1003)
-
-### My Wakatime stats
-Total coding time last week: 
