@@ -14,9 +14,9 @@ jobs:
 
       - name: Fetch WakaTime stats
         env:
-          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
+          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API }}
         run: |
-          curl -s "https://wakatime.com/api/v1/users/current/stats/last_7_days?api_key=${{ secrets.WAKATIME_API_KEY }}" > waka_stats.json
+          curl -s "https://wakatime.com/api/v1/users/current/stats/last_7_days?api_key=${{ secrets.WAKATIME_API }}" > waka_stats.json
           coding_time=$(jq -r '.data.human_readable_total' waka_stats.json)
 
           # Read the current README content
