@@ -27,4 +27,4 @@ Upwork: [Upwork](https://www.upwork.com/freelancers/~01c25a7c4b607747f7)
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=tommy1003)
 
 ## My WakaTime Stats
-<!--waka-->
+<!--waka-->Total coding time last week: null
