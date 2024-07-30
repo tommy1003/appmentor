@@ -17,8 +17,6 @@ jobs:
           WAKATIME_API_KEY: ${{ secrets.WAKA_API }}
         run: |
           curl -s "https://wakatime.com/api/v1/users/current/stats/last_7_days?api_key=${{ secrets.WAKA_API }}" > waka_stats.json
-          all_data=$(jq -r '.data' waka_stats.json)
-          echo "${all_data}"  # Debugging: Output the JSON response
           coding_time=$(jq -r '.data.human_readable_total' waka_stats.json)
           echo "Coding time: ${coding_time}"  # Debugging: Output the coding time
 
@@ -28,10 +26,9 @@ jobs:
           echo "Current README content:"
           echo "$readme_content"  # Debugging: Output the current README content
 
-          new_content=$(echo "$readme_content" | sed -E "s|(<!--waka-->)[^<]*(<!--endwaka-->)|\1\nTotal coding time last week: ${coding_time}\n\2|")
+          new_content=$(echo "$readme_content" | sed -E "s|(<!--waka-->)*(<!--endwaka-->)|Total coding time last week: ${coding_time}|")
           echo "New README content:"
           echo "$new_content"  # Debugging: Output the new README content
-
           echo "$new_content" > README.md
 
       - name: Commit changes
